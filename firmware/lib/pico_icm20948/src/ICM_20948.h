@@ -19,9 +19,10 @@ A C++ interface to the ICM-20948 for Raspberry Pi Pico
 class ICM_20948
 {
 private:
-  bool _printDebug = false; //Flag to print the serial commands we are sending to the Serial port for debug
-
   const uint8_t MAX_MAGNETOMETER_STARTS = 10; // This replaces maxTries
+
+public:
+  bool _printDebug = false; //Flag to print the serial commands we are sending to the Serial port for debug
 
 protected:
   ICM_20948_Device_t _device;

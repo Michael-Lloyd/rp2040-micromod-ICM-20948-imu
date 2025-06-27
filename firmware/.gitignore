@@ -1,0 +1,8 @@
+# Build directory
+.build/
+
+# Environment file
+env.sh
+
+# Claude documentation
+CLAUDE.md

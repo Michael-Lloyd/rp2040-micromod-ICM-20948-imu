@@ -168,6 +168,16 @@ ODR is computed as follows:
     gyr_d361bw4_n376bw5,
   } ICM_20948_GYRO_CONFIG_1_DLPCFG_e;
 
+  // Define friendly names for DLPF configurations
+  #define ICM_20948_DLPF_CFG_196_6HZ  gyr_d196bw6_n229bw8
+  #define ICM_20948_DLPF_CFG_151_8HZ  gyr_d151bw8_n187bw6
+  #define ICM_20948_DLPF_CFG_119_5HZ  gyr_d119bw5_n154bw3
+  #define ICM_20948_DLPF_CFG_51_8HZ   gyr_d51bw2_n73bw3
+  #define ICM_20948_DLPF_CFG_23_9HZ   gyr_d23bw9_n35bw9
+  #define ICM_20948_DLPF_CFG_11_6HZ   gyr_d11bw6_n17bw8
+  #define ICM_20948_DLPF_CFG_5_7HZ    gyr_d5bw7_n8bw9
+  #define ICM_20948_DLPF_CFG_361_4HZ  gyr_d361bw4_n376bw5
+
   // AGB2_REG_GYRO_CONFIG_2,
   // AGB2_REG_XG_OFFS_USRH,
   // AGB2_REG_XG_OFFS_USRL,
@@ -202,6 +212,16 @@ ODR is computed as follows:
     acc_d5bw7_n8bw3,
     acc_d473bw_n499bw,
   } ICM_20948_ACCEL_CONFIG_DLPCFG_e;
+
+  // Define friendly names for accelerometer DLPF configurations
+  #define ICM_20948_ACCEL_DLPF_CFG_246_0HZ  acc_d246bw_n265bw
+  #define ICM_20948_ACCEL_DLPF_CFG_246_0HZ_NOLPF  acc_d246bw_n265bw_1
+  #define ICM_20948_ACCEL_DLPF_CFG_111_4HZ  acc_d111bw4_n136bw
+  #define ICM_20948_ACCEL_DLPF_CFG_50_4HZ   acc_d50bw4_n68bw8
+  #define ICM_20948_ACCEL_DLPF_CFG_23_9HZ   acc_d23bw9_n34bw4
+  #define ICM_20948_ACCEL_DLPF_CFG_11_5HZ   acc_d11bw5_n17bw
+  #define ICM_20948_ACCEL_DLPF_CFG_5_7HZ    acc_d5bw7_n8bw3
+  #define ICM_20948_ACCEL_DLPF_CFG_473HZ    acc_d473bw_n499bw
 
   // AGB2_REG_ACCEL_CONFIG_2,
   // 	// Break
