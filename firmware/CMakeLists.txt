@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.13...3.27)
 
+# Board must be set before import and project definition 
+set(PICO_BOARD sparkfun_micromod)
+
 # initialize the SDK based on PICO_SDK_PATH
 # note: this must happen before project()
 include(pico_sdk_import.cmake)
@@ -8,6 +11,7 @@ project(picomm_imu)
 
 # initialize the Raspberry Pi Pico SDK
 pico_sdk_init()
+
 
 # Add library subdirectories
 add_subdirectory(lib/pico_icm20948)
