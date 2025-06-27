@@ -1,18 +1,3 @@
-/**
- * ICM-20948 IMU Interface for SparkFun MicroMod RP2040
- * 
- * This program interfaces with the ICM-20948 9-axis IMU via the Qwiic (I2C) 
- * connector on the SparkFun MicroMod Input and Display Carrier Board.
- * 
- * Hardware connections (via Qwiic connector):
- * - I2C SDA: GPIO4 (MicroMod Pin 13)
- * - I2C SCL: GPIO5 (MicroMod Pin 15)
- * - Power and ground provided through Qwiic connector
- * 
- * The Qwiic system uses I2C with 3.3V logic and includes pull-up resistors
- * on the carrier board, so no additional pull-ups are needed.
- */
-
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
@@ -131,7 +116,7 @@ int main() {
                        myICM.gyrX(), myICM.gyrY(), myICM.gyrZ());
                                 printf(" Mag (uT):    X=%8.1f  Y=%8.1f  Z=%8.1f\n", 
                        myICM.magX(), myICM.magY(), myICM.magZ());
-                                printf(" Temp (C):    %.2f\n\n", myICM.temp());
+                                printf(" Temp (C):    %.2f\n\n", myICM.temp());
                         }
             
                         readingCount++;

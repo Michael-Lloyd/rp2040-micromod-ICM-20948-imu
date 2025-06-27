@@ -361,7 +361,7 @@ extern "C"
   // typedef union{
   // 	struct{
   // 		uint8_t FIFO_OVERFLOW_INT_40	: 5;
-  // 		uint8_t reserved_0				: 3;
+  // 		uint8_t reserved_0		: 3;
   // 	}grouped;
   // 	struct{
   // 		uint8_t FIFO_OVERFLOW_INT_0 	: 1;
@@ -369,7 +369,7 @@ extern "C"
   // 		uint8_t FIFO_OVERFLOW_INT_2 	: 1;
   // 		uint8_t FIFO_OVERFLOW_INT_3 	: 1;
   // 		uint8_t FIFO_OVERFLOW_INT_4 	: 1;
-  // 		uint8_t reserved_0				: 3;
+  // 		uint8_t reserved_0		: 3;
   // 	}individual;
   // }ICM_20948_INT_STATUS_2_t;
 
@@ -382,7 +382,7 @@ extern "C"
   // typedef union{
   // 	struct{
   // 		uint8_t FIFO_WM_INT_40	: 5;
-  // 		uint8_t reserved_0				: 3;
+  // 		uint8_t reserved_0	: 3;
   // 	}grouped;
   // 	struct{
   // 		uint8_t FIFO_WM_INT_0 	: 1;
@@ -390,7 +390,7 @@ extern "C"
   // 		uint8_t FIFO_WM_INT_2 	: 1;
   // 		uint8_t FIFO_WM_INT_3 	: 1;
   // 		uint8_t FIFO_WM_INT_4 	: 1;
-  // 		uint8_t reserved_0				: 3;
+  // 		uint8_t reserved_0	: 3;
   // 	}individual;
   // }ICM_20948_INT_STATUS_3_t;
 
