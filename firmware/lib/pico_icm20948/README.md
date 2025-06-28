@@ -1,6 +1,7 @@
 # ICM-20948 Library for Raspberry Pi Pico
 
-This is a C++ library for the ICM-20948 9-axis IMU (accelerometer, gyroscope, magnetometer) designed specifically for use with the Raspberry Pi Pico and the pico-sdk. This library is based on the SparkFun ICM-20948 Arduino library but has been modified to work with the Pico's native I2C interface.
+This is a C++ library for the ICM-20948 9-axis IMU (accelerometer, gyroscope, magnetometer) 
+designed specifically for use with the Raspberry Pi Pico and the pico-sdk. 
 
 ## Features
 
@@ -10,26 +11,6 @@ This is a C++ library for the ICM-20948 9-axis IMU (accelerometer, gyroscope, ma
 - Configurable sample rates and full-scale ranges
 - Digital Low Pass Filter (DLPF) configuration
 - DMP (Digital Motion Processor) support (optional)
-- Printf-based debug output
-
-## Requirements
-
-- Raspberry Pi Pico or compatible RP2040 board
-- Pico SDK installed and configured
-- ICM-20948 breakout board or module
-- I2C pull-up resistors (usually included on breakout boards)
-
-## Wiring
-
-Connect your ICM-20948 to the Pico as follows:
-
-| ICM-20948 | Raspberry Pi Pico |
-|-----------|-------------------|
-| VDD       | 3.3V              |
-| GND       | GND               |
-| SDA       | GPIO 4 (or any I2C SDA pin) |
-| SCL       | GPIO 5 (or any I2C SCL pin) |
-| AD0       | GND (for address 0x68) or 3.3V (for 0x69) |
 
 ## Library Structure
 
@@ -92,32 +73,6 @@ int main() {
 }
 ```
 
-### Building the Example
-
-1. Set up your Pico SDK environment:
-   ```bash
-   export PICO_SDK_PATH=/path/to/pico-sdk
-   ```
-
-2. Navigate to the example directory:
-   ```bash
-   cd pico_icm20948/example
-   ```
-
-3. Create a build directory and configure:
-   ```bash
-   mkdir build
-   cd build
-   cmake ..
-   ```
-
-4. Build the example:
-   ```bash
-   make
-   ```
-
-5. Flash the resulting `icm20948_test.uf2` file to your Pico
-
 ## API Reference
 
 ### Initialization
@@ -166,24 +121,6 @@ The Digital Motion Processor (DMP) is supported but disabled by default. To enab
 2. Rebuild your project
 
 Note: DMP firmware requires approximately 14KB of program memory.
-
-## Troubleshooting
-
-1. **I2C Communication Fails**
-   - Check wiring connections
-   - Verify I2C address (use AD0 pin to select between 0x68 and 0x69)
-   - Ensure pull-up resistors are present on SDA and SCL lines
-   - Try reducing I2C speed to 100kHz
-
-2. **Magnetometer Not Working**
-   - The magnetometer requires additional initialization time
-   - It may take several attempts to initialize properly
-   - Check debug output for specific error messages
-
-3. **Incorrect Sensor Readings**
-   - Ensure proper power supply (3.3V)
-   - Check sensor orientation
-   - Verify full-scale range settings match your application
 
 ## License
 
