@@ -15,16 +15,21 @@ pico_sdk_init()
 
 # Add library subdirectories
 add_subdirectory(lib/pico_icm20948)
+add_subdirectory(lib/pico_ekf)
 
 # Create the main executable
 add_executable(picomm_imu
     src/main.cpp
+    src/imu_collector.cpp
+    src/ekf_processor.cpp
 )
 
 # Link libraries
 target_link_libraries(picomm_imu
     pico_stdlib
     pico_icm20948
+    pico_ekf
+    pico_multicore
 )
 
 # Create map/bin/hex/uf2 files
