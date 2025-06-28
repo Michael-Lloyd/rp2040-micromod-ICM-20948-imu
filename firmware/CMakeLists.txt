@@ -61,3 +61,25 @@ pico_add_extra_outputs(test_standard_ekf)
 pico_enable_stdio_usb(test_standard_ekf 1)
 pico_enable_stdio_uart(test_standard_ekf 0)
 
+# Add test executable for IterativeEKF
+add_executable(test_iterative_ekf
+    test/iterativeEKF/main.cpp
+    test/iterativeEKF/imu_collector.cpp
+    test/iterativeEKF/ekf_processor.cpp
+)
+
+# Link libraries for iterative test
+target_link_libraries(test_iterative_ekf
+    pico_stdlib
+    pico_icm20948
+    pico_ekf
+    pico_multicore
+)
+
+# Create map/bin/hex/uf2 files for iterative test
+pico_add_extra_outputs(test_iterative_ekf)
+
+# Enable USB output, disable UART output for iterative test
+pico_enable_stdio_usb(test_iterative_ekf 1)
+pico_enable_stdio_uart(test_iterative_ekf 0)
+

@@ -5,6 +5,7 @@
 #include "picoEKFTypes.h"
 #include "ExtendedKalmanFilter.h"
 #include "StandardEKF.h"
+#include "IterativeEKF.h"
 
 namespace picoEKF {
 

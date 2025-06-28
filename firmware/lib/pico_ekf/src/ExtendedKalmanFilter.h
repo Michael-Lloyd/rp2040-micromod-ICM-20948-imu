@@ -24,6 +24,7 @@ public:
 
 enum class EKFType {
     Standard,
+    Iterative,
     // Future types can be added here
     // Unscented,
     // SquareRoot,
