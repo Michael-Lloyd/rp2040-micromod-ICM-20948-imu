@@ -94,8 +94,23 @@ void ExtendedKalmanFilter::update(const IMUMeasurement& measurement) {
         return;
     }
     
-    predictState(measurement);
-    updateState(measurement);
+    // Validate time delta
+    if (measurement.dt <= 0.0f) {
+        EKF_DEBUG_PRINT("Invalid dt: %f seconds, skipping update\n", measurement.dt);
+        return;
+    }
+    
+    // Sanity check for extremely large time steps
+    if (measurement.dt > 1.0f) {
+        EKF_DEBUG_PRINT("Warning: Large dt: %f seconds, clamping to 1.0\n", measurement.dt);
+        IMUMeasurement clampedMeas = measurement;
+        clampedMeas.dt = 1.0f;
+        predictState(clampedMeas);
+        updateState(clampedMeas);
+    } else {
+        predictState(measurement);
+        updateState(measurement);
+    }
     
     state.orientation = state.orientation.normalized();
 }
