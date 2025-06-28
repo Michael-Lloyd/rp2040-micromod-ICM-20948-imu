@@ -121,6 +121,7 @@ struct Matrix {
     }
     
     void setIdentity() {
+        memset(data, 0, sizeof(data));  // Clear all values first
         for (int i = 0; i < rows && i < cols; i++) {
             data[i][i] = 1.0f;
         }

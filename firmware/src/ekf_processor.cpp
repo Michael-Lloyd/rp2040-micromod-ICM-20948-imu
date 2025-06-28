@@ -20,6 +20,9 @@ EKFProcessor::EKFProcessor(mutex_t* mutex, IMUData* data)
 }
 
 void EKFProcessor::init() {
+    // Reset EKF state first
+    ekf.reset();
+    
     picoEKF::EKFConfig config;
     
     // Configure noise parameters
@@ -31,10 +34,13 @@ void EKFProcessor::init() {
     // Set reference vectors
     config.gravityRef = gravityRef;
     config.magRef = magRef;
-    config.useMagnetometer = true;
+    config.useMagnetometer = false;  // Start without magnetometer
     
     // Initialize the EKF
     ekf.init(config);
+    
+    printf("EKF initialized with gravity ref: [%.2f, %.2f, %.2f]\n", 
+           gravityRef.x, gravityRef.y, gravityRef.z);
 }
 
 void EKFProcessor::processUpdate() {
@@ -53,19 +59,8 @@ void EKFProcessor::processUpdate() {
         return;
     }
     
-    // Calibrate magnetic reference on first reading
-    if (firstUpdate && localData.mag.norm() > 0) {
-        magRef = localData.mag;
-        picoEKF::EKFConfig config;
-        config.gyroNoise = 0.01f;
-        config.gyroBiasNoise = 0.0001f;
-        config.accelNoise = 0.1f;
-        config.magNoise = 0.1f;
-        config.gravityRef = gravityRef;
-        config.magRef = magRef;
-        config.useMagnetometer = true;
-        ekf.init(config);
-    }
+    // Skip magnetometer calibration for now to avoid re-initialization issues
+    // TODO: Implement proper magnetometer calibration without re-init
     
     // Calculate time delta
     float dt = 0.01f;  // Default 10ms

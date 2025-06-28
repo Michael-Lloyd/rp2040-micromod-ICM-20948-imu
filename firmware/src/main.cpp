@@ -94,7 +94,6 @@ int main() {
     printf("\nSystem configuration:\n");
     printf("  - Core 0: IMU data collection (56.25 Hz)\n");
     printf("  - Core 1: EKF processing (100 Hz)\n");
-    printf("  - Thread-safe data sharing via mutex\n");
     
     // Launch Core 1 for EKF processing
     printf("\nStarting EKF processor on Core 1...\n");
