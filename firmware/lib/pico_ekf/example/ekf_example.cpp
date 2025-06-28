@@ -23,7 +23,8 @@ int main() {
     printf("Pico EKF Example\n");
     printf("================\n\n");
     
-    ExtendedKalmanFilter ekf;
+    // Create a StandardEKF using the factory
+    ExtendedKalmanFilter* ekf = createEKF(EKFType::Standard);
     
     EKFConfig config;
     config.gyroNoise = 0.01f;
@@ -34,7 +35,7 @@ int main() {
     config.magRef = Vector3(1, 0, 0);
     config.useMagnetometer = true;
     
-    ekf.init(config);
+    ekf->init(config);
     printf("EKF initialized\n\n");
     
     float time = 0.0f;
@@ -47,13 +48,13 @@ int main() {
         IMUMeasurement meas;
         simulate_imu_data(meas, time);
         
-        ekf.update(meas);
+        ekf->update(meas);
         
         if (i % 100 == 0) {
             float roll, pitch, yaw;
-            ekf.getEulerAngles(roll, pitch, yaw);
+            ekf->getEulerAngles(roll, pitch, yaw);
             
-            Vector3 gyroBias = ekf.getGyroBias();
+            Vector3 gyroBias = ekf->getGyroBias();
             
             roll *= 180.0f / M_PI;
             pitch *= 180.0f / M_PI;
@@ -69,6 +70,9 @@ int main() {
     }
     
     printf("\nEKF example completed!\n");
+    
+    // Clean up
+    delete ekf;
     
     while (true) {
         sleep_ms(1000);

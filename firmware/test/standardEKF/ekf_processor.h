@@ -2,7 +2,6 @@
 #define EKF_PROCESSOR_H
 
 #include "picoEKF.h"
-#include "StandardEKF.h"
 #include "imu_collector.h"
 #include "pico/mutex.h"
 #include <stdint.h>
@@ -36,7 +35,7 @@ public:
     void setMagneticReference(const picoEKF::Vector3& ref);
 };
 
-// Thread entry point
-void ekf_processor_thread();
+// Thread entry point for Core 1 EKF processing
+void core1_ekf_thread();
 
 #endif

@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 # Create the pico_ekf library
 add_library(pico_ekf STATIC
     src/picoEKF.cpp
+    src/StandardEKF.cpp
 )
 
 # Include directories

@@ -39,3 +39,25 @@ pico_add_extra_outputs(picomm_imu)
 pico_enable_stdio_usb(picomm_imu 1)
 pico_enable_stdio_uart(picomm_imu 0)
 
+# Add test executable for StandardEKF
+add_executable(test_standard_ekf
+    test/standardEKF/main.cpp
+    test/standardEKF/imu_collector.cpp
+    test/standardEKF/ekf_processor.cpp
+)
+
+# Link libraries for test
+target_link_libraries(test_standard_ekf
+    pico_stdlib
+    pico_icm20948
+    pico_ekf
+    pico_multicore
+)
+
+# Create map/bin/hex/uf2 files for test
+pico_add_extra_outputs(test_standard_ekf)
+
+# Enable USB output, disable UART output for test
+pico_enable_stdio_usb(test_standard_ekf 1)
+pico_enable_stdio_uart(test_standard_ekf 0)
+
